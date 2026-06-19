@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · 华体会</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafbfc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.75;
+            color: #1e2a3a;
+            padding: 2rem 1.2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        /* 柔和开场区，无大色块、无强对比 */
+        .opening {
+            margin-bottom: 2.8rem;
+            padding-top: 1.2rem;
+        }
+
+        .opening .prelude {
+            font-size: 1rem;
+            letter-spacing: 0.6px;
+            color: #7a8a9e;
+            margin-bottom: 0.75rem;
+            font-weight: 400;
+        }
+
+        .opening h1 {
+            font-size: 2.1rem;
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            color: #13202b;
+            margin-bottom: 0.6rem;
+        }
+
+        .opening .tagline {
+            font-size: 1.05rem;
+            color: #4b5c6e;
+            border-left: 3px solid #cbd5e1;
+            padding-left: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        /* 承接段落 */
+        .context {
+            margin-bottom: 2.6rem;
+        }
+
+        .context p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #2a3a4a;
+            text-align: justify;
+        }
+
+        .context p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 特点列表 — 极简窄卡片，没有外发光或重阴影 */
+        .feature-section {
+            margin-bottom: 2.8rem;
+        }
+
+        .feature-section h2 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #1e2a3a;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .feature-item {
+            background: #ffffff;
+            padding: 0.9rem 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 0 0 1px rgba(0,0,0,0.02);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 0 0 1px #dce1e8;
+        }
+
+        .feature-marker {
+            font-size: 1.25rem;
+            line-height: 1.4;
+            min-width: 1.6rem;
+            color: #5f7d9c;
+            font-weight: 300;
+        }
+
+        .feature-text {
+            font-size: 0.98rem;
+            color: #2f4053;
+        }
+
+        .feature-text strong {
+            font-weight: 500;
+            color: #1f3348;
+        }
+
+        /* 温和提醒 / 场景段落 */
+        .gentle-reminder {
+            background: #f2f5f9;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .gentle-reminder h3 {
+            font-size: 1.1rem;
+            font-weight: 450;
+            margin-bottom: 0.9rem;
+            color: #1f2f3f;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .gentle-reminder p {
+            font-size: 0.96rem;
+            color: #314454;
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+        }
+
+        .gentle-reminder p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* FAQ 摘要 — 极简样式 */
+        .faq-digest {
+            margin-bottom: 2.6rem;
+        }
+
+        .faq-digest h3 {
+            font-size: 1.1rem;
+            font-weight: 450;
+            color: #1e2a3a;
+            margin-bottom: 1rem;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 450;
+            font-size: 0.98rem;
+            color: #1e2a3a;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            font-size: 0.92rem;
+            color: #54677c;
+            margin-left: 0.2rem;
+        }
+
+        /* 温和结尾 — 内嵌链接 */
+        .closing {
+            border-top: 1px solid #e6edf4;
+            padding-top: 1.8rem;
+            margin-top: 0.4rem;
+            font-size: 0.98rem;
+            color: #3d4f62;
+            text-align: left;
+            line-height: 1.8;
+        }
+
+        .closing a {
+            color: #1f4e7a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            font-weight: 450;
+            transition: border-color 0.15s;
+        }
+
+        .closing a:hover {
+            border-bottom-color: #1f4e7a;
+        }
+
+        .closing .muted {
+            color: #6b7e93;
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 0.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 480px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+            .opening h1 {
+                font-size: 1.7rem;
+            }
+            .feature-item {
+                padding: 0.8rem 1rem;
+            }
+            .gentle-reminder {
+                padding: 1.3rem 1.1rem;
+            }
+        }
+
+        /* 辅助脚注 — 不喧宾夺主 */
+        .footnote {
+            margin-top: 2.4rem;
+            font-size: 0.78rem;
+            color: #9aabbc;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 开场：短句 + 标题 -->
+    <div class="opening">
+        <div class="prelude">—— 一次平和的查找</div>
+        <h1>从零开始了解<br>华体会的访问脉络</h1>
+        <div class="tagline">没有繁复的铺陈，只有一份简明的提醒与指南。</div>
+    </div>
+
+    <!-- 承接段落：简明、务实 -->
+    <div class="context">
+        <p>
+            在信息流动的日常里，我们时常需要快速定位一个平台、一项服务，或是一个社区。  
+            如果你正在寻找与「华体会」相关的访问方式或引导说明，这篇页面也许能帮你节省一点时间。
+            下面的内容既不夸大，也不渲染，只从实际使用的角度整理了几条值得留意的线索。
+        </p>
+        <p>
+            无论你是初次接触，还是想确认某个入口的细节，保持耐心、核对域名，往往是第一步。  
+            同时也要记得：网络环境不同，访问方式可能有所差异，使用前不妨先了解自身所处的区域与网络条件。
+        </p>
+    </div>
+
+    <!-- 特点列表 —— 以“指南片段”的形式呈现 -->
+    <div class="feature-section">
+        <h2>几个值得留意的特点</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="feature-marker">·</span>
+                <div class="feature-text"><strong>域名明确</strong> —— 主站入口为 portal-m-hth.com.cn，任何变体或近似地址都建议先核实再使用。</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-marker">·</span>
+                <div class="feature-text"><strong>界面适应</strong> —— 在移动端与桌面端均可获得相对一致的浏览体验，布局会随屏幕宽度自动调整。</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-marker">·</span>
+                <div class="feature-text"><strong>无需额外插件</strong> —— 大多数现代浏览器可直接加载，无需安装特定扩展或软件。</div>
+            </div>
+            <div class="feature-item">
+                <span class="feature-marker">·</span>
+                <div class="feature-text"><strong>信息透明</strong> —— 页面所展示的功能与引导均基于公开内容，不包含隐藏条款或诱导操作。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 温和提醒场景 -->
+    <div class="gentle-reminder">
+        <h3>☕ 访问时的小小提醒</h3>
+        <p>
+            如果你是通过社交平台、消息转发或他人分享的链接进入，建议先看一眼地址栏：  
+            确保域名以 <strong>portal-m-hth.com.cn</strong> 开头或包含该核心部分。  
+            另外，部分地区和网络运营商可能会对境外域名做限制，若遇到加载缓慢，可尝试更换 DNS 或使用本地网络环境重试。
+        </p>
+        <p>
+            请记得：任何要求你提供敏感信息（如支付密码、身份证照片）的弹窗或页面，都应当格外警惕。  
+            保持清醒比任何快捷方式都重要。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 —— 只选两个常见问题 -->
+    <div class="faq-digest">
+        <h3>快速疑问 · 简答</h3>
+        <div class="faq-item">
+            <div class="faq-q">Q：我需要注册才能浏览内容吗？</div>
+            <div class="faq-a">大部分基础信息页面无需登录即可查看。部分功能或互动区域可能需要注册，具体以页面提示为准。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：手机浏览器打开后布局错乱怎么办？</div>
+            <div class="faq-a">尝试将浏览器更新至最新版本，并开启“桌面模式”或“请求桌面网站”，通常可以改善显示效果。</div>
+        </div>
+    </div>
+
+    <!-- 温和结尾 · 嵌入链接（自然句式，不含“进入/点击/访问/查看/打开/官网/入口”） -->
+    <div class="closing">
+        <p>
+            如果你需要直接访问，可以记住这个地址：<a href="https://portal-m-hth.com.cn">华体会</a>。  
+            将它当作一个稳妥的起点，再根据你自己的节奏去探索。  
+            <span class="muted">—— 愿每一次打开都清晰、从容。</span>
+        </p>
+    </div>
+
+    <div class="footnote">
+        · 仅作信息指引 ·
+    </div>
+</div>
+</body>
+</html>
