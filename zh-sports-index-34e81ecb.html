@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奇异果体育 · 轻量导航介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fce6b4 0%, #f9d88c 30%, #f3c36b 70%, #edb250 100%);
+      min-height: 100vh;
+      padding: 24px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #2e241d;
+    }
+
+    .page {
+      max-width: 1080px;
+      width: 100%;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px 20px;
+      background: rgba(255, 245, 225, 0.8);
+      backdrop-filter: blur(6px);
+      padding: 14px 28px;
+      border-radius: 60px;
+      box-shadow: 0 4px 14px rgba(180, 110, 40, 0.12);
+      margin-bottom: 40px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      color: #7b4a1e;
+    }
+
+    .logo-area span {
+      background: #d48f3c;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.98rem;
+      color: #5d3a1a;
+      padding: 6px 4px;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: #bf7f3a;
+      color: #3f2813;
+    }
+
+    .nav-kiwi {
+      background: #f2d7a1;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #3d2b15;
+      box-shadow: 0 2px 6px rgba(160, 100, 30, 0.15);
+      transition: 0.2s;
+    }
+
+    .nav-kiwi:hover {
+      background: #ebc983;
+      box-shadow: 0 4px 10px rgba(170, 110, 30, 0.2);
+    }
+
+    /* hero */
+    .hero {
+      background: rgba(255, 248, 234, 0.65);
+      backdrop-filter: blur(2px);
+      border-radius: 48px;
+      padding: 48px 36px;
+      margin-bottom: 40px;
+      box-shadow: 0 10px 30px rgba(140, 80, 20, 0.1);
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 620;
+      color: #3d2915;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 i {
+      font-style: normal;
+      background: #e4b46a;
+      padding: 0 12px;
+      border-radius: 40px;
+      color: #241b0f;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #3f2d1b;
+      max-width: 780px;
+    }
+
+    .hero p a {
+      color: #7a4d1e;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid #dba05a;
+      transition: 0.15s;
+    }
+
+    .hero p a:hover {
+      background: #e9c186;
+      border-bottom-color: #b0702e;
+    }
+
+    /* 三个场景模块 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    .scene-card {
+      background: #fffbf3;
+      border-radius: 32px;
+      padding: 28px 24px 30px;
+      box-shadow: 0 6px 16px rgba(110, 65, 25, 0.08);
+      transition: 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(130, 75, 25, 0.12);
+      background: #fffcf7;
+    }
+
+    .scene-card .emoji-badge {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: inline-block;
+      background: #f4dbb5;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+
+    .scene-card h3 {
+      font-size: 1.25rem;
+      font-weight: 640;
+      color: #422f19;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+
+    .scene-card p {
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: #4c3820;
+      flex: 1;
+    }
+
+    .scene-card .tag-line {
+      margin-top: 16px;
+      font-size: 0.9rem;
+      color: #876a41;
+      border-left: 3px solid #cf9f58;
+      padding-left: 14px;
+      background: #f9eddb;
+      border-radius: 0 12px 12px 0;
+      padding: 8px 14px;
+    }
+
+    /* 常见说明 FAQ 摘要 */
+    .faq-summary {
+      background: rgba(255, 245, 222, 0.7);
+      backdrop-filter: blur(2px);
+      border-radius: 44px;
+      padding: 32px 34px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(120, 70, 20, 0.06);
+    }
+
+    .faq-summary h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #3e2b13;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .faq-summary h2 small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #70542b;
+    }
+
+    .faq-item {
+      padding: 14px 0;
+      border-bottom: 1px solid #e6d1ae;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #3a2614;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .faq-item p {
+      color: #4f3a20;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .faq-item p a {
+      color: #7a4d1e;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1.5px solid #dba05a;
+    }
+
+    .faq-item p a:hover {
+      background: #e7c48b;
+    }
+
+    /* 底部轻提示 */
+    .footer-note {
+      text-align: center;
+      padding: 24px 16px 8px;
+      color: #513b1f;
+      font-size: 0.95rem;
+      border-top: 1px solid #e4cca7;
+      margin-top: 16px;
+    }
+
+    .footer-note a {
+      color: #5b401b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1.5px dashed #c39349;
+    }
+
+    .footer-note a:hover {
+      color: #2f1f0b;
+      border-bottom-style: solid;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 12px 40px;
+      }
+
+      .top-nav {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px 20px;
+        border-radius: 40px;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 16px;
+      }
+
+      .hero {
+        padding: 32px 22px;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .scenes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-summary {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+      <div class="logo-area">
+        <span></span> 奇异果·导航
+      </div>
+      <div class="nav-links">
+        <a href="#">再次访问</a>
+        <a href="#">场景</a>
+        <a href="#">说明</a>
+        <a href="https://zh-sports-kiwi.com" class="nav-kiwi">奇异果体育</a>
+      </div>
+    </nav>
+
+    <!-- hero 核心介绍 —— 从再次访问与收藏切入 -->
+    <div class="hero">
+      <h1>再次回到 <i>奇异果</i> · 持续关注的起点</h1>
+      <p>
+        每一次重新打开浏览器，你可能会在书签夹里看到那个熟悉的名字。对于经常浏览体育资讯的人来说，<a href="https://zh-sports-kiwi.com">奇异果体育</a> 往往成为反复访问的选项之一。它不只是一次性的信息入口，更是一个可以沉淀阅读习惯的地方。无论是赛前分析还是赛后综述，这里的内容节奏偏向扎实与连贯，适合那些希望把某个平台当作长期信息源的用户。
+      </p>
+    </div>
+
+    <!-- 三个场景模块：再次访问 / 收藏价值 / 持续关注 -->
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <div class="emoji-badge">🔁</div>
+        <h3>再次访问 · 无需刻意记</h3>
+        <p>你不需要每次都重新搜索。把 <a href="https://zh-sports-kiwi.com" style="color:#7a4d1e; font-weight:600; text-decoration:none; border-bottom:1.5px solid #dba05a;">奇异果体育</a> 加入书签或浏览器常用栏，下一次访问时直接打开，省去中间步骤。对于经常关注特定赛事动态的人，这种固定路径能节省不少时间。</p>
+        <div class="tag-line">📌 一天后 / 一周后 / 赛季中</div>
+      </div>
+      <div class="scene-card">
+        <div class="emoji-badge">⭐</div>
+        <h3>收藏倾向 · 信息锚点</h3>
+        <p>一个值得反复打开的页面，往往具备稳定的更新节奏和结构清晰的版块。奇异果体育的页面布局偏向传统阅读型，不会频繁改版，这让你能快速定位到感兴趣的区域。把链接收藏在文件夹里，它就成了一个固定的信息锚点。</p>
+        <div class="tag-line">🏷️ 收藏夹里的常客</div>
+      </div>
+      <div class="scene-card">
+        <div class="emoji-badge">🔭</div>
+        <h3>持续关注 · 从一页开始</h3>
+        <p>如果你习惯在某个平台上持续追踪联赛、球员或队伍，那么一个稳定可访问的首页就显得重要。从 <a href="https://zh-sports-kiwi.com" style="color:#7a4d1e; font-weight:600; text-decoration:none; border-bottom:1.5px solid #dba05a;">奇异果体育</a> 出发，你可以按自己的节奏浏览，不必被推送算法裹挟。关注是一种主动选择，而这里给你保留了选择的空间。</p>
+        <div class="tag-line">🧭 你的节奏，你关注</div>
+      </div>
+    </div>
+
+    <!-- 常见说明 FAQ 摘要 — 轻量知识型 -->
+    <div class="faq-summary">
+      <h2>📋 常见说明 <small>来自访问者的真实疑问</small></h2>
+      <div class="faq-item">
+        <strong>我上次来过，页面内容会变化很大吗？</strong>
+        <p>首页结构通常保持稳定，但文章区块和重点赛事会随日期更新。如果你隔了一段时间再次访问，会发现熟悉的导航和分类，但推荐内容会反映最新动态。这也是许多人愿意把 <a href="https://zh-sports-kiwi.com">奇异果体育</a> 留在书签栏的原因之一：既有一致性，又有新鲜度。</p>
+      </div>
+      <div class="faq-item">
+        <strong>怎样快速找到我之前看过的某篇文章？</strong>
+        <p>你可以利用站内分类或日期索引进行回溯。如果页面提供了搜索功能，直接输入关键词会更高效。另外，浏览器的历史记录也是不错的辅助工具。把首页当作起点，然后按图索骥。</p>
+      </div>
+      <div class="faq-item">
+        <strong>这个平台适合长期关注吗？</strong>
+        <p>从内容节奏来看，它适合那些不希望被过度推送、自己控制阅读频率的用户。没有强弹窗或频繁的诱导点击，页面体验更接近传统的信息获取方式。如果你喜欢在一个安静的地方持续阅读体育相关内容，可以把它作为一个备选基地。</p>
+      </div>
+    </div>
+
+    <!-- 及底部轻提示 -->
+    <div class="footer-note">
+      <p>✦ 从收藏夹到日常浏览 · <a href="https://zh-sports-kiwi.com">奇异果体育</a> 始终在那里 ✦</p>
+    </div>
+  </div>
+</body>
+</html>
