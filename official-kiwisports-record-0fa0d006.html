@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>再次遇见 · 奇异果体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fad0c4 0%, #ffd2b0 40%, #ffb88c 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.25rem;
+            line-height: 1.6;
+            color: #2d2a24;
+        }
+
+        .card {
+            max-width: 820px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(4px);
+            border-radius: 48px 24px 48px 24px;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 30, 0.25),
+                        0 8px 20px rgba(255, 210, 160, 0.3);
+            padding: 2.8rem 2.4rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 540px) {
+            .card {
+                padding: 2rem 1.25rem;
+                border-radius: 28px 18px 28px 18px;
+            }
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #4a2e1e;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #8f6b4f;
+            background: #f5e4d6;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+
+        .tagline {
+            font-size: 1.05rem;
+            color: #7a5f48;
+            border-left: 4px solid #e09f74;
+            padding-left: 1.2rem;
+            margin: 0.6rem 0 1.8rem 0;
+            font-style: normal;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.6rem;
+            margin: 2rem 0 1.8rem 0;
+        }
+
+        .feature-item {
+            background: #faf3ed;
+            border-radius: 24px;
+            padding: 1.2rem 1rem 1rem 1rem;
+            box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.8), 0 6px 12px -8px rgba(110, 60, 20, 0.2);
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4f321f;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #5e4836;
+        }
+
+        .story-block {
+            margin: 2rem 0 1.8rem 0;
+        }
+
+        .story-block p {
+            margin-bottom: 0.85rem;
+        }
+
+        .story-block strong {
+            color: #7a4d2e;
+        }
+
+        .faq-mini {
+            background: #feeede;
+            border-radius: 28px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0 2rem 0;
+        }
+
+        .faq-mini details {
+            margin: 0.3rem 0;
+            border-bottom: 1px dashed #dbb99a;
+            padding: 0.2rem 0 0.3rem 0;
+        }
+
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #4f321f;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+        }
+
+        .faq-mini summary::marker {
+            color: #bd825a;
+        }
+
+        .faq-mini details p {
+            margin: 0.4rem 0 0.1rem 0.6rem;
+            font-size: 0.9rem;
+            color: #5e4a38;
+        }
+
+        .action-tip {
+            background: #f2e2d4;
+            border-radius: 60px;
+            padding: 0.7rem 1.6rem;
+            display: inline-block;
+            font-size: 0.95rem;
+            color: #392d22;
+            margin: 0.6rem 0 1rem 0;
+            border: 1px solid #eacdb8;
+            box-shadow: 0 2px 6px rgba(200, 140, 90, 0.1);
+        }
+
+        .action-tip a {
+            color: #6f3f21;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px dotted #bd825a;
+            transition: border 0.15s;
+        }
+
+        .action-tip a:hover {
+            border-bottom: 2px solid #6f3f21;
+        }
+
+        .btn-link-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: flex-start;
+            gap: 0.6rem 1.2rem;
+            margin: 1.6rem 0 0.2rem 0;
+        }
+
+        .btn-link-wrap a {
+            display: inline-block;
+            background: #dba175;
+            color: #fff;
+            font-weight: 500;
+            padding: 0.75rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            box-shadow: 0 6px 14px rgba(180, 100, 50, 0.2);
+            transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+            border: none;
+            line-height: 1.4;
+        }
+
+        .btn-link-wrap a:hover {
+            background: #c58357;
+            box-shadow: 0 8px 18px rgba(160, 80, 30, 0.25);
+            transform: scale(1.02);
+        }
+
+        .btn-link-wrap a:active {
+            transform: scale(0.97);
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: #7d6a58;
+            border-top: 1px solid #e3cfbe;
+            padding-top: 1.2rem;
+            text-align: left;
+        }
+
+        .footnote span {
+            background: #f0dfd0;
+            padding: 0.1rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #5e4533;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ead6c5;
+            margin: 1.6rem 0 0.8rem 0;
+        }
+
+        .inline-highlight {
+            background: #fdf1e9;
+            padding: 0.1rem 0.5rem;
+            border-radius: 24px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>
+            <span>奇异果体育</span>
+            <small>· 常来常新</small>
+        </h1>
+        <div class="tagline">
+            从一次偶然的发现，到习惯性点开收藏夹——<br>这是你值得再次停留的地方。
+        </div>
+
+        <!-- 产品摘要 / 再次访问的缘由 -->
+        <div class="story-block">
+            <p><strong>关于再次打开的理由</strong><br>
+            很长一段时间里，我们都在寻找一个节奏合拍、内容干净的体育空间。不需要震耳的推送，也不必忍受杂乱的信息流。<a href="https://official-kiwisports.com" style="color:#7a4d2e; font-weight:500; text-decoration:underline; text-decoration-style: wavy; text-underline-offset:4px; text-decoration-color:#dba175;">奇异果体育</a>恰好是这样的存在：界面温和，资讯更新有度，比赛数据与专栏文章穿插得刚刚好。无论是清晨浏览比分，还是深夜翻看战术分析，它都像一位话不多但句句到位的朋友。</p>
+            <p>好产品值得被记住，所以我把它的链接固定在了浏览器收藏栏的第二格。每次鼠标划过，都像看到一盏暖黄色的小灯。</p>
+        </div>
+
+        <!-- 亮点 / 特征网格 -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>📋 赛果 · 一眼清晰</h3>
+                <p>重点赛事整合为简洁卡片，比分、时间、阶段一目了然。无需反复跳转。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📰 专栏 · 有温度的解读</h3>
+                <p>不止是数据堆砌，还有编辑手记、历史对位与场外故事，读起来像和朋友聊天。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🔖 收藏体验 · 自然而然</h3>
+                <p>页面结构稳定，没有突然弹出的干扰层。适合长期关注，也适合定期回来扫一眼。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🧭 导航克制 · 不迷路</h3>
+                <p>分类清晰，联赛、杯赛、专题各自归位。即使两周没上，也能迅速找回上次看的内容。</p>
+            </div>
+        </div>
+
+        <!-- 使用建议 / 场景提示 -->
+        <div class="action-tip">
+            💡 如果你正在犹豫是否把它加入收藏夹——不妨先打开 <a href="https://official-kiwisports.com" style="border-bottom:2px dotted #bd825a; text-decoration:none;">奇异果体育</a> 逛一圈，感受一下节奏。合拍的话，再留下不迟。
+        </div>
+
+        <!-- FAQ 摘要 · 生活化问答 -->
+        <div class="faq-mini">
+            <details>
+                <summary>“我上次收藏的页面还能用吗？”</summary>
+                <p>放心，站点域名与结构一直保持稳定。如果你之前收藏的是&nbsp;official-kiwisports.com，直接点击即可回到熟悉的主页。</p>
+            </details>
+            <details>
+                <summary>“内容更新频率怎么样？”</summary>
+                <p>重要赛事期间信息流会稍微密集一些，但整体保持克制——每天几次关键更新，不会刷屏。也支持按联赛筛选。</p>
+            </details>
+            <details>
+                <summary>“移动端看着舒服吗？”</summary>
+                <p>经过适配，手机浏览器内可直接流畅浏览，卡片与文字均自动缩放。放在主屏幕也很和谐。</p>
+            </details>
+            <details>
+                <summary>“我该怎么把它放到最容易找到的位置？”</summary>
+                <p>建议在浏览器中打开 <a href="https://official-kiwisports.com" style="color:#7a4d2e; font-weight:500; text-decoration:underline; text-underline-offset:3px;">奇异果体育</a> 后，使用「加入书签」或「添加到主屏幕」功能。一次设置，长期顺手。</p>
+            </details>
+        </div>
+
+        <!-- 可信但克制的访问说明 + 第二个链接自然嵌入 -->
+        <div class="btn-link-wrap">
+            <a href="https://official-kiwisports.com">奇异果体育</a>
+            <span style="font-size:0.9rem; color:#6b5542; background:#f5e5d9; padding:0.2rem 1rem; border-radius:60px;">· 收藏它，就像放一本常翻的杂志</span>
+        </div>
+
+        <!-- 底部小字 / 温和说明 -->
+        <hr>
+        <div class="footnote">
+            <span>⏳ 再次访问·友好提醒</span>
+            <p style="margin-top:0.5rem;">本页仅作产品介绍。一切内容以 <a href="https://official-kiwisports.com" style="color:#5e4533; text-decoration:underline; text-underline-offset:3px; text-decoration-color:#cfa882;">奇异果体育</a> 实际页面为准。建议首次使用前了解网站布局与功能，根据个人习惯决定是否长期关注。保持适度，自在浏览。</p>
+            <p style="margin-top:0.8rem; font-size:0.8rem; color:#8b7969;">· 页面风格灵感来自暖色渐变与白卡片 · 一次介绍，常读常新</p>
+        </div>
+    </div>
+</body>
+</html>
